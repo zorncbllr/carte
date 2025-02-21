@@ -1,3 +1,4 @@
+import 'package:carte/components/best_seller.dart';
 import 'package:carte/utils/category_button.dart';
 import 'package:carte/utils/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final cardColor = const Color.fromARGB(255, 36, 36, 36);
   final textColor = const Color.fromARGB(255, 128, 128, 128);
+  final activeColor = const Color.fromARGB(255, 4, 133, 71);
 
   List<dynamic> categories = [
     ['Popular', true],
@@ -66,6 +68,51 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+
+            SizedBox(),
+
+            // product cards
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Popular',
+                  style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  'See all',
+                  style: TextStyle(
+                    color: activeColor,
+                  ),
+                ),
+              ],
+            ),
+
+            // product list per category
+            BestSeller(),
+
+            // add button
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 50,
+                vertical: 12,
+              ),
+              decoration: BoxDecoration(
+                color: activeColor,
+                borderRadius: BorderRadius.circular(1000),
+              ),
+              child: Text(
+                'Add New Product',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            )
           ],
         ),
       )),
