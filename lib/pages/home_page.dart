@@ -26,8 +26,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Padding(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: const Color.fromARGB(255, 14, 14, 14),
+        foregroundColor: textColor,
+      ),
+
+      drawer: Drawer(
+        backgroundColor: cardColor,
+      ),
+
+      // body contents
+      body: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
           spacing: 18,
@@ -115,7 +125,7 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
-      )),
+      ),
     );
   }
 }

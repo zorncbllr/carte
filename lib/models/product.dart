@@ -7,7 +7,7 @@ class Product {
     required this.sales,
   });
 
-  int sales;
+  int sales, price;
   String productName, imagePath;
-  double price, ratings;
+  double ratings;
 }

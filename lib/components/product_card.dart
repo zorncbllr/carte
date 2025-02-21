@@ -67,7 +67,7 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                   height: 80,
                   child: Padding(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(14),
                     child: Row(
                       spacing: 12,
                       children: [
@@ -79,7 +79,7 @@ class _ProductCardState extends State<ProductCard> {
                               widget.product.productName,
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                fontSize: 21,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
