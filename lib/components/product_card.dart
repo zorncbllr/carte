@@ -61,7 +61,10 @@ class _ProductCardState extends State<ProductCard> {
           alignment: AlignmentDirectional.center,
           children: [
             // product image
-            Image.asset(widget.product.imagePath),
+            Image.asset(
+              widget.product.imagePath,
+              fit: BoxFit.cover,
+            ),
 
             Padding(
               padding: const EdgeInsets.all(18),

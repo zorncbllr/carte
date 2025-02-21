@@ -33,8 +33,8 @@ class OrderTile extends StatelessWidget {
         spacing: 14,
         children: [
           Container(
-            width: 80,
-            height: 80,
+            width: 70,
+            height: 70,
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(24),
@@ -61,30 +61,36 @@ class OrderTile extends StatelessWidget {
                     ),
                   ],
                 ),
-                Column(
+                Row(
+                  spacing: 20,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      quantity.toString(),
-                      style: productOrderStyle['OrderData'],
+                    Column(
+                      children: [
+                        Text(
+                          quantity.toString(),
+                          style: productOrderStyle['OrderData'],
+                        ),
+                        Text(
+                          'Qty',
+                          style: productOrderStyle['OrderLabel'],
+                        ),
+                      ],
                     ),
-                    Text(
-                      'Qty',
-                      style: productOrderStyle['OrderLabel'],
+                    Column(
+                      children: [
+                        Text(
+                          '\$${product.price}',
+                          style: productOrderStyle['OrderData'],
+                        ),
+                        Text(
+                          'Price',
+                          style: productOrderStyle['OrderLabel'],
+                        ),
+                      ],
                     ),
                   ],
-                ),
-                Column(
-                  children: [
-                    Text(
-                      '\$${product.price}',
-                      style: productOrderStyle['OrderData'],
-                    ),
-                    Text(
-                      'Price',
-                      style: productOrderStyle['OrderLabel'],
-                    ),
-                  ],
-                ),
+                )
               ],
             ),
           )
