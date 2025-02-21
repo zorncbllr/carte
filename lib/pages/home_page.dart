@@ -1,4 +1,4 @@
-import 'package:carte/components/best_seller.dart';
+import 'package:carte/components/product_list_view.dart';
 import 'package:carte/utils/category_button.dart';
 import 'package:carte/utils/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +15,8 @@ class _HomePageState extends State<HomePage> {
   final textColor = const Color.fromARGB(255, 128, 128, 128);
   final activeColor = const Color.fromARGB(255, 4, 133, 71);
 
+  int activeCategoryIndex = 0;
+
   List<dynamic> categories = [
     ['Popular', true],
     ['Earphones', false],
@@ -22,6 +24,16 @@ class _HomePageState extends State<HomePage> {
     ['Protection', false],
     ['Camera', false]
   ];
+
+  void switchCategories(int index) {
+    setState(() {
+      for (var category in categories) {
+        category[1] = false;
+      }
+      categories[index][1] = true;
+      activeCategoryIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +60,8 @@ class _HomePageState extends State<HomePage> {
               children: [
                 // search bar
                 CustomSearchBar(),
-                // slidders action button
+
+                // shop action button
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(1000),
@@ -74,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                 itemCount: categories.length,
                 itemBuilder: (context, index) => CategoryButton(
                   isActive: categories[index][1],
+                  onTap: () => switchCategories(index),
                   text: categories[index][0],
                 ),
               ),
@@ -86,7 +100,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Popular',
+                  categories[activeCategoryIndex][0],
                   style: TextStyle(
                     color: textColor,
                     fontWeight: FontWeight.bold,
@@ -103,28 +117,36 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // product list per category
-            BestSeller(),
+            ProductListView(
+              activeCategory: categories[activeCategoryIndex][0],
+            ),
 
             // add button
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 50,
-                vertical: 12,
-              ),
-              decoration: BoxDecoration(
-                color: activeColor,
-                borderRadius: BorderRadius.circular(1000),
-              ),
-              child: Text(
-                'Add New Product',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            )
           ],
         ),
+      ),
+
+      bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 50,
+              vertical: 12,
+            ),
+            decoration: BoxDecoration(
+              color: activeColor,
+              borderRadius: BorderRadius.circular(1000),
+            ),
+            child: Text(
+              'Add New Product',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
