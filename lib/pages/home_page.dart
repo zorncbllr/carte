@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(
                     color: Theme.of(context).hintColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 20,
                   ),
                 ),
 

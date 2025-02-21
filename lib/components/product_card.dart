@@ -25,21 +25,23 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   final descriptionCardColor = const Color.fromARGB(255, 77, 77, 77);
 
+  void showDetails() {
+    if (!widget.isDetails) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailsPage(
+            product: widget.product,
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        if (!widget.isDetails) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DetailsPage(
-                product: widget.product,
-              ),
-            ),
-          );
-        }
-      },
+      onTap: showDetails,
 
       // product card
       child: Container(

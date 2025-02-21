@@ -14,6 +14,10 @@ class Main extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: HomePage(),
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: const Color.fromARGB(255, 14, 14, 14),
+          foregroundColor: const Color.fromARGB(255, 128, 128, 128),
+        ),
         cardColor: const Color.fromARGB(255, 36, 36, 36),
         hintColor: const Color.fromARGB(255, 128, 128, 128),
         primaryColor: const Color.fromARGB(255, 4, 133, 71),

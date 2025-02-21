@@ -28,6 +28,8 @@ class _DetailsPageState extends State<DetailsPage> {
         sales: widget.product.sales,
         subImagesPath: temp,
         category: widget.product.category,
+        description: widget.product.description,
+        comments: widget.product.comments,
       );
     });
   }
@@ -37,8 +39,6 @@ class _DetailsPageState extends State<DetailsPage> {
     return Scaffold(
       // header
       appBar: AppBar(
-        foregroundColor: Theme.of(context).hintColor,
-        backgroundColor: const Color.fromARGB(255, 14, 14, 14),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -56,9 +56,7 @@ class _DetailsPageState extends State<DetailsPage> {
               Theme.of(context).cardColor,
             ),
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
           icon: Icon(
             Icons.arrow_back_ios_new_rounded,
             size: 16,
@@ -152,7 +150,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   ],
                 ),
                 Text(
-                  'A sleek black joystick with neon accents and a comfortable grip for precise gaming control...',
+                  widget.product.description,
                   style: TextStyle(
                     color: Theme.of(context).hintColor,
                   ),
@@ -198,6 +196,77 @@ class _DetailsPageState extends State<DetailsPage> {
                   ],
                 )
               ],
+            ),
+
+            SizedBox(
+              height: 30,
+            ),
+
+            Text(
+              'Reviews',
+              style: TextStyle(
+                color: Colors.grey.shade300,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+
+            SizedBox(
+              height: 14,
+            ),
+
+            // product comments
+            SizedBox(
+              height: 120,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: widget.product.comments.length,
+                itemBuilder: (context, index) => Container(
+                  padding: EdgeInsets.all(12),
+                  width: 250,
+                  margin: EdgeInsets.only(right: 12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    spacing: 12,
+                    children: [
+                      Text(
+                        widget.product.comments[index].comment,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Theme.of(context).hintColor,
+                        ),
+                      ),
+                      Row(
+                        spacing: 14,
+                        children: [
+                          // Image.asset(widget.product.comments[0].profileImagePath),
+                          Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(1000),
+                              color: const Color.fromARGB(255, 94, 43, 27),
+                            ),
+                          ),
+                          Text(
+                            widget.product.comments[index].name,
+                            style: TextStyle(
+                              color: Colors.grey.shade300,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ),
           ],
         ),

@@ -1,3 +1,5 @@
+import 'package:carte/models/comment.dart';
+
 class Product {
   Product({
     required this.imagePath,
@@ -7,10 +9,13 @@ class Product {
     required this.sales,
     required this.subImagesPath,
     required this.category,
+    required this.description,
+    required this.comments,
   });
 
   List<String> subImagesPath, category;
   int sales, price;
-  String productName, imagePath;
+  String productName, imagePath, description;
   double ratings;
+  List<Comment> comments;
 }
