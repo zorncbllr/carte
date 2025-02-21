@@ -35,9 +35,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 14, 14, 14),
-        foregroundColor: Theme.of(context).hintColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'Products',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
       ),
 
       drawer: Drawer(
@@ -64,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                     color: Theme.of(context).cardColor,
                   ),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.pushNamed(context, '/orders'),
                     color: Theme.of(context).hintColor,
                     icon: Icon(
                       Icons.shopping_bag_outlined,

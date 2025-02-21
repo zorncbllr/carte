@@ -1,4 +1,6 @@
+import 'package:carte/pages/details_page.dart';
 import 'package:carte/pages/home_page.dart';
+import 'package:carte/pages/order_page.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -23,6 +25,10 @@ class Main extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 4, 133, 71),
         scaffoldBackgroundColor: const Color.fromARGB(255, 14, 14, 14),
       ),
+      routes: {
+        '/home': (context) => HomePage(),
+        '/orders': (context) => OrderPage(),
+      },
     );
   }
 }
