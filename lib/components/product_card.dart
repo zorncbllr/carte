@@ -23,7 +23,6 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  final cardColor = const Color.fromARGB(255, 36, 36, 36);
   final descriptionCardColor = const Color.fromARGB(255, 77, 77, 77);
 
   @override
@@ -51,7 +50,7 @@ class _ProductCardState extends State<ProductCard> {
             width: 0.2,
             color: descriptionCardColor,
           ),
-          color: cardColor,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(32),
         ),
 

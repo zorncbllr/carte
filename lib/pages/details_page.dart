@@ -15,10 +15,6 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  final cardColor = const Color.fromARGB(255, 36, 36, 36);
-  final activeColor = const Color.fromARGB(255, 4, 133, 71);
-  final textColor = const Color.fromARGB(255, 128, 128, 128);
-
   void switchMainImage(int index) {
     setState(() {
       List<String> temp = widget.product.subImagesPath.toList();
@@ -31,6 +27,7 @@ class _DetailsPageState extends State<DetailsPage> {
         ratings: widget.product.ratings,
         sales: widget.product.sales,
         subImagesPath: temp,
+        category: widget.product.category,
       );
     });
   }
@@ -40,7 +37,7 @@ class _DetailsPageState extends State<DetailsPage> {
     return Scaffold(
       // header
       appBar: AppBar(
-        foregroundColor: textColor,
+        foregroundColor: Theme.of(context).hintColor,
         backgroundColor: const Color.fromARGB(255, 14, 14, 14),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -55,7 +52,9 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
         leading: IconButton.filled(
           style: ButtonStyle(
-            backgroundColor: WidgetStatePropertyAll(cardColor),
+            backgroundColor: WidgetStatePropertyAll(
+              Theme.of(context).cardColor,
+            ),
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -87,7 +86,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 Text(
                   'Edit',
                   style: TextStyle(
-                    color: activeColor,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ],
@@ -113,7 +112,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         height: 70,
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: cardColor,
+                          color: Theme.of(context).cardColor,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Image.asset(
@@ -155,7 +154,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 Text(
                   'A sleek black joystick with neon accents and a comfortable grip for precise gaming control...',
                   style: TextStyle(
-                    color: textColor,
+                    color: Theme.of(context).hintColor,
                   ),
                 ),
                 Row(
@@ -168,13 +167,13 @@ class _DetailsPageState extends State<DetailsPage> {
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: cardColor,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(1000),
                       ),
                       child: Text(
                         '${widget.product.ratings} Rating',
                         style: TextStyle(
-                          color: textColor,
+                          color: Theme.of(context).hintColor,
                         ),
                       ),
                     ),
@@ -186,13 +185,13 @@ class _DetailsPageState extends State<DetailsPage> {
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: cardColor,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(1000),
                       ),
                       child: Text(
                         '${widget.product.sales} Sales',
                         style: TextStyle(
-                          color: textColor,
+                          color: Theme.of(context).hintColor,
                         ),
                       ),
                     )

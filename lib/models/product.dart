@@ -6,9 +6,10 @@ class Product {
     required this.ratings,
     required this.sales,
     required this.subImagesPath,
+    required this.category,
   });
 
-  List<String> subImagesPath;
+  List<String> subImagesPath, category;
   int sales, price;
   String productName, imagePath;
   double ratings;

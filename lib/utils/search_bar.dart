@@ -8,9 +8,6 @@ class CustomSearchBar extends StatefulWidget {
 }
 
 class _CustomSearchBarState extends State<CustomSearchBar> {
-  final cardColor = const Color.fromARGB(255, 36, 36, 36);
-  final textColor = const Color.fromARGB(255, 128, 128, 128);
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -19,7 +16,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           horizontal: 12,
         ),
         decoration: BoxDecoration(
-          color: cardColor,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(1000),
         ),
         child: Row(
@@ -27,7 +24,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           children: [
             Icon(
               Icons.search_rounded,
-              color: textColor,
+              color: Theme.of(context).hintColor,
             ),
             Expanded(
               child: TextField(
@@ -38,7 +35,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                   ),
                   hintText: 'Search Product',
                   hintStyle: TextStyle(
-                    color: textColor,
+                    color: Theme.of(context).hintColor,
                   ),
                 ),
               ),

@@ -2,14 +2,22 @@ import 'dart:math';
 
 import 'package:carte/components/product_card.dart';
 import 'package:carte/data/products.dart';
+import 'package:carte/models/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductListView extends StatefulWidget {
   ProductListView({
     super.key,
     required this.activeCategory,
-  });
+  }) {
+    for (Product product in products) {
+      if (product.category.contains(activeCategory)) {
+        categoryProducts.add(product);
+      }
+    }
+  }
 
+  late List<Product> categoryProducts = [];
   String activeCategory;
 
   @override
@@ -21,9 +29,9 @@ class _ProductListViewState extends State<ProductListView> {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: categoryProducts[widget.activeCategory]!.length,
+        itemCount: widget.categoryProducts.length,
         itemBuilder: (context, index) => ProductCard(
-          product: categoryProducts[widget.activeCategory]![index],
+          product: widget.categoryProducts[index],
         ),
       ),
     );

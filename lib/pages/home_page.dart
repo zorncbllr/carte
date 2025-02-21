@@ -11,10 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final cardColor = const Color.fromARGB(255, 36, 36, 36);
-  final textColor = const Color.fromARGB(255, 128, 128, 128);
-  final activeColor = const Color.fromARGB(255, 4, 133, 71);
-
   int activeCategoryIndex = 0;
 
   List<dynamic> categories = [
@@ -41,11 +37,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: const Color.fromARGB(255, 14, 14, 14),
-        foregroundColor: textColor,
+        foregroundColor: Theme.of(context).hintColor,
       ),
 
       drawer: Drawer(
-        backgroundColor: cardColor,
+        backgroundColor: Theme.of(context).cardColor,
       ),
 
       // body contents
@@ -65,11 +61,11 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(1000),
-                    color: cardColor,
+                    color: Theme.of(context).cardColor,
                   ),
                   child: IconButton(
                     onPressed: () {},
-                    color: textColor,
+                    color: Theme.of(context).hintColor,
                     icon: Icon(
                       Icons.shopping_bag_outlined,
                       size: 20,
@@ -102,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   categories[activeCategoryIndex][0],
                   style: TextStyle(
-                    color: textColor,
+                    color: Theme.of(context).hintColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -112,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'See all',
                   style: TextStyle(
-                    color: activeColor,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ],
@@ -135,7 +131,7 @@ class _HomePageState extends State<HomePage> {
               vertical: 12,
             ),
             decoration: BoxDecoration(
-              color: activeColor,
+              color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(1000),
             ),
             child: Text(

@@ -8,10 +8,6 @@ class CategoryButton extends StatefulWidget {
     required this.onTap,
   });
 
-  final cardColor = const Color.fromARGB(255, 36, 36, 36);
-  final textColor = const Color.fromARGB(255, 128, 128, 128);
-  final activeColor = const Color.fromARGB(255, 4, 133, 71);
-
   String text;
   late bool isActive;
   VoidCallback onTap;
@@ -30,7 +26,9 @@ class _CategoryButtonState extends State<CategoryButton> {
           horizontal: 12,
         ),
         decoration: BoxDecoration(
-          color: widget.isActive ? widget.activeColor : widget.cardColor,
+          color: widget.isActive
+              ? Theme.of(context).primaryColor
+              : Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(1000),
         ),
         margin: EdgeInsets.only(right: 8),
@@ -38,7 +36,8 @@ class _CategoryButtonState extends State<CategoryButton> {
           child: Text(
             widget.text,
             style: TextStyle(
-              color: widget.isActive ? Colors.white : widget.textColor,
+              color:
+                  widget.isActive ? Colors.white : Theme.of(context).hintColor,
             ),
           ),
         ),
