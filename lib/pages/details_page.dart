@@ -21,9 +21,17 @@ class _DetailsPageState extends State<DetailsPage> {
 
   void switchMainImage(int index) {
     setState(() {
-      String temp = widget.product.imagePath;
-      widget.product.imagePath = widget.product.subImagesPath[index];
-      widget.product.subImagesPath[index] = temp;
+      List<String> temp = widget.product.subImagesPath.toList();
+      temp[index] = widget.product.imagePath;
+
+      widget.product = Product(
+        imagePath: widget.product.subImagesPath[index],
+        price: widget.product.price,
+        productName: widget.product.productName,
+        ratings: widget.product.ratings,
+        sales: widget.product.sales,
+        subImagesPath: temp,
+      );
     });
   }
 
