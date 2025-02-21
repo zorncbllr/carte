@@ -8,6 +8,11 @@ Map<String, List<Product>> categoryProducts = {
       productName: 'Nintendo Pro',
       ratings: 4.5,
       sales: 1200,
+      subImagesPath: [
+        'lib/images/nintendo-pro(sub1).png',
+        'lib/images/nintendo-pro(sub2).png',
+        'lib/images/nintendo-pro(sub3).png',
+      ],
     ),
     Product(
       imagePath: 'lib/images/deaf-cods.png',
@@ -15,6 +20,7 @@ Map<String, List<Product>> categoryProducts = {
       productName: 'Deaf Cods',
       ratings: 4.5,
       sales: 2400,
+      subImagesPath: [],
     ),
   ],
   'Earphones': [
@@ -24,6 +30,7 @@ Map<String, List<Product>> categoryProducts = {
       productName: 'Deaf Cods',
       ratings: 4.5,
       sales: 2400,
+      subImagesPath: [],
     ),
   ],
   'Charger': [],

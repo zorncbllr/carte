@@ -107,6 +107,8 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 16,
                   ),
                 ),
+
+                // see all action
                 Text(
                   'See all',
                   style: TextStyle(
@@ -120,8 +122,6 @@ class _HomePageState extends State<HomePage> {
             ProductListView(
               activeCategory: categories[activeCategoryIndex][0],
             ),
-
-            // add button
           ],
         ),
       ),
