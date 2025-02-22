@@ -1,4 +1,5 @@
 import 'package:carte/components/login_form.dart';
+import 'package:carte/utils/carte_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -36,10 +37,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             TweenAnimationBuilder(
-              tween: Tween<double>(
-                begin: 480,
-                end: 0,
-              ),
+              tween: Tween<double>(begin: 480, end: 0),
               duration: Duration(milliseconds: 500),
               builder: (context, value, _) => Transform.translate(
                 offset: Offset(0, value),

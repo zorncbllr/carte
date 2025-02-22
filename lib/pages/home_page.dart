@@ -1,5 +1,6 @@
 import 'package:carte/components/product_list_view.dart';
 import 'package:carte/utils/bottom_bar_button.dart';
+import 'package:carte/utils/carte_button.dart';
 import 'package:carte/utils/category_button.dart';
 import 'package:carte/utils/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-
       drawer: Drawer(
         backgroundColor: Theme.of(context).cardColor,
       ),
@@ -130,10 +130,9 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-
-      bottomNavigationBar: BottomBarButton(
+      bottomNavigationBar: CarteButton(
+        onTap: () {},
         label: 'Add New Product',
-        onClick: () {},
       ),
     );
   }

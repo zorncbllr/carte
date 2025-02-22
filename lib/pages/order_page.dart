@@ -2,6 +2,7 @@ import 'package:carte/components/credit_card.dart';
 import 'package:carte/components/order_tile.dart';
 import 'package:carte/data/products.dart';
 import 'package:carte/utils/bottom_bar_button.dart';
+import 'package:carte/utils/carte_button.dart';
 import 'package:flutter/material.dart';
 
 class OrderPage extends StatefulWidget {
@@ -103,9 +104,9 @@ class _OrderPageState extends State<OrderPage> {
         ),
       ),
 
-      bottomNavigationBar: BottomBarButton(
+      bottomNavigationBar: CarteButton(
+        onTap: () {},
         label: 'Proceed Order',
-        onClick: () {},
       ),
     );
   }
