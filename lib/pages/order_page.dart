@@ -1,6 +1,7 @@
 import 'package:carte/components/credit_card.dart';
 import 'package:carte/components/order_tile.dart';
 import 'package:carte/data/products.dart';
+import 'package:carte/utils/bottom_bar_button.dart';
 import 'package:flutter/material.dart';
 
 class OrderPage extends StatefulWidget {
@@ -89,6 +90,7 @@ class _OrderPageState extends State<OrderPage> {
               height: 20,
             ),
 
+            // computation card
             Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).cardColor,
@@ -101,27 +103,9 @@ class _OrderPageState extends State<OrderPage> {
         ),
       ),
 
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 50,
-              vertical: 12,
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(1000),
-            ),
-            child: Text(
-              'Proceed Order',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ],
+      bottomNavigationBar: BottomBarButton(
+        label: 'Proceed Order',
+        onClick: () {},
       ),
     );
   }

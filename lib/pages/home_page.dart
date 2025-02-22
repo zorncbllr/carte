@@ -1,4 +1,5 @@
 import 'package:carte/components/product_list_view.dart';
+import 'package:carte/utils/bottom_bar_button.dart';
 import 'package:carte/utils/category_button.dart';
 import 'package:carte/utils/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -130,27 +131,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 50,
-              vertical: 12,
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(1000),
-            ),
-            child: Text(
-              'Add New Product',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ],
+      bottomNavigationBar: BottomBarButton(
+        label: 'Add New Product',
+        onClick: () {},
       ),
     );
   }
