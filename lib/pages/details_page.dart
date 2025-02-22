@@ -1,3 +1,4 @@
+import 'package:carte/components/comment_tile.dart';
 import 'package:carte/components/product_card.dart';
 import 'package:carte/models/product.dart';
 import 'package:flutter/material.dart';
@@ -220,49 +221,8 @@ class _DetailsPageState extends State<DetailsPage> {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: widget.product.comments.length,
-                itemBuilder: (context, index) => Container(
-                  padding: EdgeInsets.all(12),
-                  width: 250,
-                  margin: EdgeInsets.only(right: 12),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).cardColor,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    spacing: 12,
-                    children: [
-                      Text(
-                        widget.product.comments[index].comment,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Theme.of(context).hintColor,
-                        ),
-                      ),
-                      Row(
-                        spacing: 14,
-                        children: [
-                          // Image.asset(widget.product.comments[0].profileImagePath),
-                          Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(1000),
-                              color: const Color.fromARGB(255, 94, 43, 27),
-                            ),
-                          ),
-                          Text(
-                            widget.product.comments[index].name,
-                            style: TextStyle(
-                              color: Colors.grey.shade300,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                itemBuilder: (context, index) => CommentTile(
+                  comment: widget.product.comments[index],
                 ),
               ),
             ),

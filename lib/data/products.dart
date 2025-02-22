@@ -11,9 +11,9 @@ List<Product> products = [
       ratings: 4.5,
       sales: 1200,
       subImagesPath: [
-        'lib/images/nintendo-pro(sub1).png',
-        'lib/images/nintendo-pro(sub2).png',
-        'lib/images/nintendo-pro(sub3).png',
+        'lib/images/nintendo(sub1).webp',
+        'lib/images/nintendo(sub2).webp',
+        'lib/images/nintendo(sub3).webp',
       ],
       category: [
         'Popular'
