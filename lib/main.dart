@@ -1,10 +1,20 @@
-import 'package:carte/pages/details_page.dart';
+import 'package:carte/hive/hive_registrar.g.dart';
 import 'package:carte/pages/home_page.dart';
 import 'package:carte/pages/login_page.dart';
 import 'package:carte/pages/order_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final appDocumentDirectory = await getApplicationDocumentsDirectory();
+
+  await Hive.initFlutter(appDocumentDirectory.path);
+
+  Hive.registerAdapters();
+
   runApp(const Main());
 }
 

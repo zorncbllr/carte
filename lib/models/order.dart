@@ -1,5 +1,4 @@
 import 'package:carte/models/product.dart';
-import 'package:hive_ce/hive.dart';
 
 class Order {
   Product product;
