@@ -1,6 +1,7 @@
 import 'package:carte/models/comment.dart';
+import 'package:hive_ce/hive.dart';
 
-class Product {
+class Product extends HiveObject {
   Product({
     required this.imagePath,
     required this.price,

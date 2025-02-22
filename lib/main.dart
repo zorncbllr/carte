@@ -1,5 +1,6 @@
 import 'package:carte/pages/details_page.dart';
 import 'package:carte/pages/home_page.dart';
+import 'package:carte/pages/login_page.dart';
 import 'package:carte/pages/order_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,12 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: LoginPage(),
       theme: ThemeData(
+        dividerTheme: DividerThemeData(
+          color: const Color.fromARGB(255, 128, 128, 128),
+          thickness: 0.1,
+        ),
         appBarTheme: AppBarTheme(
           backgroundColor: const Color.fromARGB(255, 14, 14, 14),
           foregroundColor: const Color.fromARGB(255, 128, 128, 128),
