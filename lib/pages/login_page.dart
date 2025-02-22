@@ -87,18 +87,21 @@ class _LoginPageState extends State<LoginPage> {
                       spacing: 16,
                       children: [
                         // login button
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(1000),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Log In',
-                              style: TextStyle(
-                                color: Colors.grey.shade300,
-                                fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(context, '/home'),
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(1000),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Log In',
+                                style: TextStyle(
+                                  color: Colors.grey.shade300,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
