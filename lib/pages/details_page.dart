@@ -97,30 +97,28 @@ class _DetailsPageState extends State<DetailsPage> {
             ProductCard.details(product: widget.product),
 
             // product sub-images
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 16,
-                children: [
-                  for (int i = 0; i < widget.product.subImagesPath.length; i++)
-                    GestureDetector(
-                      onTap: () => switchMainImage(i),
-                      child: Container(
-                        width: 70,
-                        height: 70,
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).cardColor,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Image.asset(
-                          widget.product.subImagesPath[i],
-                          width: 70,
-                        ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 16,
+              children: [
+                for (int i = 0; i < widget.product.subImagesPath.length; i++)
+                  GestureDetector(
+                    onTap: () => switchMainImage(i),
+                    child: Container(
+                      width: 70,
+                      height: 70,
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                    )
-                ],
-              ),
+                      child: Image.asset(
+                        widget.product.subImagesPath[i],
+                        width: 70,
+                      ),
+                    ),
+                  )
+              ],
             ),
 
             SizedBox(

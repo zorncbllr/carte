@@ -30,7 +30,7 @@ class OrderTile extends StatelessWidget {
         vertical: 12,
       ),
       child: Row(
-        spacing: 14,
+        spacing: 16,
         children: [
           Container(
             width: 70,
@@ -62,7 +62,7 @@ class OrderTile extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  spacing: 20,
+                  spacing: 36,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Column(

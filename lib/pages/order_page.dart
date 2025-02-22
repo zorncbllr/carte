@@ -71,14 +71,12 @@ class _OrderPageState extends State<OrderPage> {
             ),
 
             // product order list view
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  OrderTile(quantity: 1, product: products[0]),
-                  OrderTile(quantity: 2, product: products[1]),
-                ],
-              ),
+            ListView(
+              shrinkWrap: true,
+              children: [
+                OrderTile(quantity: 1, product: products[0]),
+                OrderTile(quantity: 2, product: products[1]),
+              ],
             ),
 
             SizedBox(
