@@ -1,6 +1,7 @@
 import 'package:carte/components/credit_card.dart';
 import 'package:carte/components/order_tile.dart';
 import 'package:carte/data/products.dart';
+import 'package:carte/models/order.dart';
 import 'package:carte/utils/carte_button.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,11 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  List<Order> orders = [
+    Order(product: products[0], quantity: 1),
+    Order(product: products[1], quantity: 2),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,12 +78,10 @@ class _OrderPageState extends State<OrderPage> {
             ),
 
             // product order list view
-            ListView(
+            ListView.builder(
+              itemCount: orders.length,
               shrinkWrap: true,
-              children: [
-                OrderTile(quantity: 1, product: products[0]),
-                OrderTile(quantity: 2, product: products[1]),
-              ],
+              itemBuilder: (context, index) => OrderTile(order: orders[index]),
             ),
 
             SizedBox(

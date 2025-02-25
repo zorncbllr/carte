@@ -1,15 +1,13 @@
-import 'package:carte/models/product.dart';
+import 'package:carte/models/order.dart';
 import 'package:flutter/material.dart';
 
 class OrderTile extends StatelessWidget {
   OrderTile({
     super.key,
-    required this.quantity,
-    required this.product,
+    required this.order,
   });
 
-  Product product;
-  int quantity;
+  Order order;
 
   Map<String, TextStyle> productOrderStyle = {
     'OrderData': TextStyle(
@@ -40,7 +38,7 @@ class OrderTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(24),
             ),
             child: Image.asset(
-              product.imagePath,
+              order.product.imagePath,
               fit: BoxFit.cover,
             ),
           ),
@@ -52,11 +50,11 @@ class OrderTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      product.productName,
+                      order.product.productName,
                       style: productOrderStyle['OrderData'],
                     ),
                     Text(
-                      product.category[0],
+                      order.product.category[0],
                       style: productOrderStyle['OrderLabel'],
                     ),
                   ],
@@ -68,7 +66,7 @@ class OrderTile extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          quantity.toString(),
+                          order.quantity.toString(),
                           style: productOrderStyle['OrderData'],
                         ),
                         Text(
@@ -80,7 +78,7 @@ class OrderTile extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          '\$${product.price}',
+                          '\$${order.product.price}',
                           style: productOrderStyle['OrderData'],
                         ),
                         Text(
