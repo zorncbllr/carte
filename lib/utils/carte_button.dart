@@ -55,7 +55,6 @@ class _CarteButtonState extends State<CarteButton> {
             borderRadius: BorderRadius.circular(1000),
             border: Border.all(
               style: BorderStyle.solid,
-              width: 0.5,
               color: widget.secondary
                   ? Theme.of(context).hintColor
                   : Colors.transparent,

@@ -38,6 +38,7 @@ dependencies:
   hive_ce:
   hive_ce_flutter:
   path_provider:
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

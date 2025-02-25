@@ -2,9 +2,11 @@ import 'package:carte/hive/hive_registrar.g.dart';
 import 'package:carte/pages/home_page.dart';
 import 'package:carte/pages/login_page.dart';
 import 'package:carte/pages/order_page.dart';
+import 'package:carte/stores/user_store.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,7 +17,10 @@ void main(List<String> args) async {
 
   Hive.registerAdapters();
 
-  runApp(const Main());
+  runApp(ChangeNotifierProvider(
+    create: (context) => UserStore(),
+    child: const Main(),
+  ));
 }
 
 class Main extends StatelessWidget {

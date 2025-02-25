@@ -1,3 +1,4 @@
+import 'package:carte/components/login_form.dart';
 import 'package:flutter/material.dart';
 
 class InputField extends StatefulWidget {
@@ -8,7 +9,8 @@ class InputField extends StatefulWidget {
   });
 
   String hintText;
-  TextEditingController controller;
+
+  InputEditingController controller;
   @override
   _InputFieldState createState() => _InputFieldState();
 }
@@ -16,27 +18,34 @@ class InputField extends StatefulWidget {
 class _InputFieldState extends State<InputField> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(1000),
-        border: Border.all(
-          width: 0.5,
-          color: Theme.of(context).hintColor,
+    return TextField(
+      onChanged: (value) => setState(() {
+        widget.controller.errorText = null;
+      }),
+      controller: widget.controller,
+      cursorColor: Theme.of(context).primaryColor,
+      decoration: InputDecoration(
+        hintText: widget.hintText,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(1000),
+          borderSide: BorderSide(
+            color: Theme.of(context).hintColor,
+          ),
         ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(1000),
+          borderSide: BorderSide(
+            color: widget.controller.errorText == null
+                ? Theme.of(context).hintColor
+                : Colors.redAccent,
+            style: BorderStyle.solid,
+          ),
+        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 18),
+        errorText: widget.controller.errorText,
       ),
-      child: TextField(
-        controller: widget.controller,
-        cursorColor: Theme.of(context).primaryColor,
-        decoration: InputDecoration(
-          hintText: widget.hintText,
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 18),
-        ),
-        style: TextStyle(
-          color: Colors.grey.shade300,
-        ),
+      style: TextStyle(
+        color: Colors.grey.shade300,
       ),
     );
   }
