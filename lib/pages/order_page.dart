@@ -2,6 +2,7 @@ import 'package:carte/components/credit_card.dart';
 import 'package:carte/components/order_tile.dart';
 import 'package:carte/data/products.dart';
 import 'package:carte/models/order.dart';
+import 'package:carte/models/user.dart';
 import 'package:carte/utils/carte_button.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +14,17 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
-  List<Order> orders = [
-    Order(product: products[0], quantity: 1),
-    Order(product: products[1], quantity: 2),
-  ];
+  User user = User(
+    name: 'Ferra Alexandra',
+    email: 'ferra@gmail.com',
+    password: '123456',
+    orders: [
+      Order(product: products[0], quantity: 1),
+      Order(product: products[1], quantity: 2),
+    ],
+    cardNumber: '2304 3234 2424',
+    address: '21 Maryanarka St',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -79,16 +87,20 @@ class _OrderPageState extends State<OrderPage> {
 
             // product order list view
             ListView.builder(
-              itemCount: orders.length,
+              itemCount: user.orders.length,
               shrinkWrap: true,
-              itemBuilder: (context, index) => OrderTile(order: orders[index]),
+              itemBuilder: (context, index) => OrderTile(
+                order: user.orders[index],
+              ),
             ),
 
             SizedBox(
               height: 20,
             ),
 
-            CreditCard(),
+            CreditCard(
+              user: user,
+            ),
 
             SizedBox(
               height: 20,

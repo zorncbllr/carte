@@ -5,7 +5,7 @@ nextTypeId: 2
 types:
   User:
     typeId: 0
-    nextIndex: 4
+    nextIndex: 6
     fields:
       name:
         index: 0
@@ -15,6 +15,10 @@ types:
         index: 2
       orders:
         index: 3
+      cardNumber:
+        index: 4
+      address:
+        index: 5
   Product:
     typeId: 1
     nextIndex: 9

@@ -1,7 +1,13 @@
+import 'package:carte/models/user.dart';
 import 'package:flutter/material.dart';
 
 class CreditCard extends StatelessWidget {
-  const CreditCard({Key? key}) : super(key: key);
+  CreditCard({
+    super.key,
+    required this.user,
+  });
+
+  User user;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +58,7 @@ class CreditCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '2304 3234 2424',
+                    user.cardNumber,
                     style: TextStyle(
                       color: Colors.grey.shade300,
                       fontSize: 24,
@@ -79,7 +85,7 @@ class CreditCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Ferra Alexandra',
+                        user.name,
                         style: TextStyle(
                           color: Colors.grey.shade300,
                           fontSize: 14,
@@ -99,7 +105,7 @@ class CreditCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '21 Maryanarka St',
+                        user.address,
                         style: TextStyle(
                           color: Colors.grey.shade300,
                           fontSize: 14,
