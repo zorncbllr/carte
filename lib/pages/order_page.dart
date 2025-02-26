@@ -1,7 +1,7 @@
 import 'package:carte/components/credit_card.dart';
 import 'package:carte/components/order_tile.dart';
 import 'package:carte/stores/user_store.dart';
-import 'package:carte/utils/carte_button.dart';
+import 'package:carte/components/carte_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
