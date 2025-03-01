@@ -1,12 +1,9 @@
 import 'package:carte/controllers/auth_controller.dart';
+import 'package:carte/utils/input_editing_controller.dart';
 import 'package:carte/views/widgets/carte_button.dart';
 import 'package:flutter/material.dart';
 import 'package:carte/views/widgets/input_field.dart';
 import 'package:provider/provider.dart';
-
-class InputEditingController extends TextEditingController {
-  String? errorText;
-}
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -151,11 +148,27 @@ class _LoginFormState extends State<LoginForm> {
                 ),
 
                 // bottom text
-                Text(
-                  'Login with your social media account.',
-                  style: TextStyle(
-                    color: Theme.of(context).hintColor,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "don't have an account? ",
+                      style: TextStyle(
+                        color: Theme.of(context).hintColor,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        "register here",
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             )

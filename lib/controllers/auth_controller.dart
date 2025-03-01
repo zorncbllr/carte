@@ -1,7 +1,5 @@
-import 'package:carte/data/products.dart';
-import 'package:carte/models/order.dart';
 import 'package:carte/models/user.dart';
-import 'package:carte/views/widgets/login_form.dart';
+import 'package:carte/utils/input_editing_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
