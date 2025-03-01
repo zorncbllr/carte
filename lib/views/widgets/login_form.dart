@@ -1,8 +1,7 @@
-import 'package:carte/models/user.dart';
-import 'package:carte/stores/user_store.dart';
-import 'package:carte/components/carte_button.dart';
+import 'package:carte/controllers/auth_controller.dart';
+import 'package:carte/views/widgets/carte_button.dart';
 import 'package:flutter/material.dart';
-import 'package:carte/components/input_field.dart';
+import 'package:carte/views/widgets/input_field.dart';
 import 'package:provider/provider.dart';
 
 class InputEditingController extends TextEditingController {
@@ -28,51 +27,9 @@ class _LoginFormState extends State<LoginForm> {
         _remember = !_remember;
       });
 
-  void onLogin(UserStore userStore) {
-    bool isError = false;
-
-    if (emailController.text.isEmpty) {
-      setState(() {
-        emailController.errorText = 'Email is required.';
-      });
-      isError = true;
-    }
-
-    if (passwordController.text.isEmpty) {
-      setState(() {
-        passwordController.errorText = 'Password is required.';
-      });
-      isError = true;
-    }
-
-    if (isError) {
-      return;
-    }
-
-    List<User> users = userStore.getUsers;
-
-    for (User user in users) {
-      if (user.email == emailController.text) {
-        if (user.password == passwordController.text) {
-          userStore.setCurrentUser(user);
-          Navigator.pushReplacementNamed(context, '/home');
-        } else {
-          setState(() {
-            passwordController.errorText = 'Wrong credentials.';
-          });
-        }
-        return;
-      }
-    }
-
-    setState(() {
-      emailController.errorText = 'User not found.';
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserStore>(
+    return Consumer<AuthController>(
       builder: (context, value, child) => Container(
         padding: EdgeInsets.all(30),
         decoration: BoxDecoration(
@@ -136,7 +93,11 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 // login button
                 CarteButton.expand(
-                  onTap: () => onLogin(value),
+                  onTap: () => value.handleLoginSubmit(
+                    context,
+                    emailController,
+                    passwordController,
+                  ),
                   label: 'Log In',
                 ),
 

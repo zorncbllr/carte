@@ -7,7 +7,10 @@ import 'package:carte/hive/hive_adapters.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
+    registerAdapter(CommentAdapter());
+    registerAdapter(OrderAdapter());
     registerAdapter(ProductAdapter());
     registerAdapter(UserAdapter());
+    registerAdapter(UuidV4Adapter());
   }
 }

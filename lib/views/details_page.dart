@@ -1,5 +1,5 @@
-import 'package:carte/components/comment_tile.dart';
-import 'package:carte/components/product_card.dart';
+import 'package:carte/views/widgets/comment_tile.dart';
+import 'package:carte/views/widgets/product_card.dart';
 import 'package:carte/models/product.dart';
 import 'package:flutter/material.dart';
 

@@ -23,13 +23,13 @@ class UserAdapter extends TypeAdapter<User> {
       orders: (fields[3] as List).cast<Order>(),
       cardNumber: fields[4] as String,
       address: fields[5] as String,
-    );
+    )..userId = fields[6] as UuidV4;
   }
 
   @override
   void write(BinaryWriter writer, User obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -41,7 +41,9 @@ class UserAdapter extends TypeAdapter<User> {
       ..writeByte(4)
       ..write(obj.cardNumber)
       ..writeByte(5)
-      ..write(obj.address);
+      ..write(obj.address)
+      ..writeByte(6)
+      ..write(obj.userId);
   }
 
   @override
@@ -75,13 +77,13 @@ class ProductAdapter extends TypeAdapter<Product> {
       category: (fields[1] as List).cast<String>(),
       description: fields[6] as String,
       comments: (fields[8] as List).cast<Comment>(),
-    );
+    )..productId = fields[9] as UuidV4;
   }
 
   @override
   void write(BinaryWriter writer, Product obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.subImagesPath)
       ..writeByte(1)
@@ -99,7 +101,9 @@ class ProductAdapter extends TypeAdapter<Product> {
       ..writeByte(7)
       ..write(obj.ratings)
       ..writeByte(8)
-      ..write(obj.comments);
+      ..write(obj.comments)
+      ..writeByte(9)
+      ..write(obj.productId);
   }
 
   @override
@@ -109,6 +113,121 @@ class ProductAdapter extends TypeAdapter<Product> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ProductAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class OrderAdapter extends TypeAdapter<Order> {
+  @override
+  final int typeId = 2;
+
+  @override
+  Order read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Order(
+      product: fields[0] as Product,
+      quantity: (fields[1] as num).toInt(),
+    )..orderId = fields[2] as UuidV4;
+  }
+
+  @override
+  void write(BinaryWriter writer, Order obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.product)
+      ..writeByte(1)
+      ..write(obj.quantity)
+      ..writeByte(2)
+      ..write(obj.orderId);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class CommentAdapter extends TypeAdapter<Comment> {
+  @override
+  final int typeId = 3;
+
+  @override
+  Comment read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Comment(
+      name: fields[1] as String,
+      comment: fields[2] as String,
+      profileImagePath: fields[3] as String,
+    )..commentId = fields[0] as UuidV4;
+  }
+
+  @override
+  void write(BinaryWriter writer, Comment obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.commentId)
+      ..writeByte(1)
+      ..write(obj.name)
+      ..writeByte(2)
+      ..write(obj.comment)
+      ..writeByte(3)
+      ..write(obj.profileImagePath);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CommentAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class UuidV4Adapter extends TypeAdapter<UuidV4> {
+  @override
+  final int typeId = 4;
+
+  @override
+  UuidV4 read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return UuidV4(
+      goptions: fields[0] as GlobalOptions?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, UuidV4 obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.goptions);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UuidV4Adapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

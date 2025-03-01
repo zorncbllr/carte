@@ -1,7 +1,7 @@
-import 'package:carte/components/credit_card.dart';
-import 'package:carte/components/order_tile.dart';
-import 'package:carte/stores/user_store.dart';
-import 'package:carte/components/carte_button.dart';
+import 'package:carte/controllers/auth_controller.dart';
+import 'package:carte/views/widgets/credit_card.dart';
+import 'package:carte/views/widgets/order_tile.dart';
+import 'package:carte/views/widgets/carte_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +15,7 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserStore>(
+    return Consumer<AuthController>(
       builder: (context, value, child) => Scaffold(
         appBar: AppBar(
           title: Row(
@@ -75,12 +75,12 @@ class _OrderPageState extends State<OrderPage> {
 
               // product order list view
               ListView.builder(
-                itemCount: value.currentUser == null
+                itemCount: value.getAuthenticatedUser == null
                     ? 0
-                    : value.currentUser!.orders.length,
+                    : value.getAuthenticatedUser!.orders.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) => OrderTile(
-                  order: value.currentUser!.orders[index],
+                  order: value.getAuthenticatedUser!.orders[index],
                 ),
               ),
 
@@ -89,7 +89,7 @@ class _OrderPageState extends State<OrderPage> {
               ),
 
               CreditCard(
-                user: value.currentUser!,
+                user: value.getAuthenticatedUser!,
               ),
 
               SizedBox(

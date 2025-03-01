@@ -1,4 +1,4 @@
-import 'package:carte/components/login_form.dart';
+import 'package:carte/views/widgets/login_form.dart';
 import 'package:flutter/material.dart';
 
 class InputField extends StatefulWidget {

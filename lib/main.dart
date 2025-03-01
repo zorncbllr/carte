@@ -1,8 +1,10 @@
+import 'package:carte/controllers/auth_controller.dart';
+import 'package:carte/controllers/user_controller.dart';
 import 'package:carte/hive/hive_registrar.g.dart';
-import 'package:carte/pages/home_page.dart';
-import 'package:carte/pages/login_page.dart';
-import 'package:carte/pages/order_page.dart';
-import 'package:carte/stores/user_store.dart';
+import 'package:carte/models/user.dart';
+import 'package:carte/views/home_page.dart';
+import 'package:carte/views/login_page.dart';
+import 'package:carte/views/order_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,8 +19,10 @@ void main(List<String> args) async {
 
   Hive.registerAdapters();
 
+  await Hive.openBox<User>('userBox');
+
   runApp(ChangeNotifierProvider(
-    create: (context) => UserStore(),
+    create: (context) => AuthController(),
     child: const Main(),
   ));
 }

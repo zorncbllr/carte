@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:carte/components/product_card.dart';
+import 'package:carte/views/widgets/product_card.dart';
 import 'package:carte/data/products.dart';
 import 'package:carte/models/product.dart';
 import 'package:flutter/material.dart';
