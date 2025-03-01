@@ -8,7 +8,7 @@ class UserController extends ChangeNotifier {
   List<User> get getUsers => _userBox.values.toList();
 
   void createUSer(User user) async {
-    await _userBox.add(user);
+    await _userBox.put(user.userId, user);
     notifyListeners();
   }
 

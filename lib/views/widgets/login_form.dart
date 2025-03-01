@@ -5,6 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:carte/views/widgets/input_field.dart';
 import 'package:provider/provider.dart';
 
+class LoginFormController {
+  bool remember = false;
+  InputEditingController emailController = InputEditingController();
+  InputEditingController passwordController = InputEditingController();
+}
+
 class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
@@ -15,15 +21,6 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  bool _remember = false;
-
-  InputEditingController emailController = InputEditingController();
-  InputEditingController passwordController = InputEditingController();
-
-  void toggleRemember(_) => setState(() {
-        _remember = !_remember;
-      });
-
   @override
   Widget build(BuildContext context) {
     return Consumer<AuthController>(
@@ -51,11 +48,11 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                 ),
                 InputField(
-                  controller: emailController,
+                  controller: value.controller.emailController,
                   hintText: 'Email',
                 ),
                 InputField(
-                  controller: passwordController,
+                  controller: value.controller.passwordController,
                   hintText: 'Password',
                 ),
               ],
@@ -71,8 +68,10 @@ class _LoginFormState extends State<LoginForm> {
                     scale: 0.8,
                     child: Checkbox(
                       activeColor: Theme.of(context).primaryColor,
-                      value: _remember,
-                      onChanged: toggleRemember,
+                      value: value.controller.remember,
+                      onChanged: (_) => setState(() {
+                        value.controller.remember = !value.controller.remember;
+                      }),
                     ),
                   ),
                   Text(
@@ -90,11 +89,7 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 // login button
                 CarteButton.expand(
-                  onTap: () => value.handleLoginSubmit(
-                    context,
-                    emailController,
-                    passwordController,
-                  ),
+                  onTap: () => value.handleLoginSubmit(context),
                   label: 'Log In',
                 ),
 

@@ -1,14 +1,14 @@
+import 'package:carte/config/routes_config.dart';
+import 'package:carte/config/theme_config.dart';
 import 'package:carte/controllers/auth_controller.dart';
-import 'package:carte/controllers/user_controller.dart';
 import 'package:carte/hive/hive_registrar.g.dart';
 import 'package:carte/models/user.dart';
-import 'package:carte/views/home_page.dart';
 import 'package:carte/views/login_page.dart';
-import 'package:carte/views/order_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/v4.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +20,7 @@ void main(List<String> args) async {
   Hive.registerAdapters();
 
   await Hive.openBox<User>('userBox');
+  await Hive.openBox<UuidV4>('authBox');
 
   runApp(ChangeNotifierProvider(
     create: (context) => AuthController(),
@@ -35,24 +36,8 @@ class Main extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
-      theme: ThemeData(
-        dividerTheme: DividerThemeData(
-          color: const Color.fromARGB(255, 128, 128, 128),
-          thickness: 0.1,
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: const Color.fromARGB(255, 14, 14, 14),
-          foregroundColor: const Color.fromARGB(255, 128, 128, 128),
-        ),
-        cardColor: const Color.fromARGB(255, 36, 36, 36),
-        hintColor: const Color.fromARGB(255, 128, 128, 128),
-        primaryColor: const Color.fromARGB(255, 4, 133, 71),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 14, 14, 14),
-      ),
-      routes: {
-        '/home': (context) => HomePage(),
-        '/orders': (context) => OrderPage(),
-      },
+      theme: themeData,
+      routes: routes,
     );
   }
 }
