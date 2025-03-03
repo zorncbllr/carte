@@ -6,4 +6,11 @@ class HiveOrder extends Order with HiveObjectMixin {
     required super.quantity,
     required super.product,
   });
+
+  static HiveOrder toHiveObject(Order order) {
+    return HiveOrder(
+      quantity: order.quantity,
+      product: order.product,
+    );
+  }
 }

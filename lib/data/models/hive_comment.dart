@@ -7,4 +7,12 @@ class HiveComment extends Comment with HiveObjectMixin {
     required super.comment,
     required super.profileImagePath,
   });
+
+  static HiveComment toHiveObject(Comment comment) {
+    return HiveComment(
+      name: comment.name,
+      comment: comment.comment,
+      profileImagePath: comment.profileImagePath,
+    );
+  }
 }

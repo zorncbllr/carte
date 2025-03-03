@@ -1,28 +1,32 @@
+import 'package:carte/data/models/hive_product.dart';
 import 'package:carte/domain/models/product.dart';
 import 'package:carte/domain/repository/product_repository.dart';
+import 'package:hive_ce_flutter/adapters.dart';
 
 class HiveProductRepository implements ProductRepository {
+  final Box<HiveProduct> _productBox = Hive.box<HiveProduct>('productBox');
+
   @override
-  Future<void> addProduct(Product newProduct) {
-    // TODO: implement addProduct
-    throw UnimplementedError();
+  Future<void> addProduct(Product newProduct) async {
+    HiveProduct product = HiveProduct.toHiveObject(newProduct);
+
+    await _productBox.put(product.productId, product);
   }
 
   @override
-  Future<void> deleteProduct(Product product) {
-    // TODO: implement deleteProduct
-    throw UnimplementedError();
+  Future<void> deleteProduct(Product product) async {
+    await _productBox.delete(product.productId);
   }
 
   @override
-  Future<List<Product>> getProducts() {
-    // TODO: implement getProducts
-    throw UnimplementedError();
+  Future<List<Product>> getProducts() async {
+    return _productBox.values.toList();
   }
 
   @override
-  Future<void> updateProduct(Product product) {
-    // TODO: implement updateProduct
-    throw UnimplementedError();
+  Future<void> updateProduct(Product product) async {
+    HiveProduct updatedProduct = HiveProduct.toHiveObject(product);
+
+    await _productBox.put(updatedProduct.productId, updatedProduct);
   }
 }

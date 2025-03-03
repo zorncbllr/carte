@@ -8,4 +8,13 @@ class HiveUser extends User with HiveObjectMixin {
     required super.password,
     required super.cardNumber,
   });
+
+  static HiveUser toHiveObject(User user) {
+    return HiveUser(
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      cardNumber: user.cardNumber,
+    );
+  }
 }
