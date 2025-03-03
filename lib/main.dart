@@ -1,4 +1,5 @@
 import 'package:carte/config/hive/hive_registrar.g.dart';
+import 'package:carte/config/theme/theme.dart';
 import 'package:carte/features/comment/data/models/hive_comment.dart';
 import 'package:carte/features/order/data/models/hive_order.dart';
 import 'package:carte/features/product/data/models/hive_product.dart';
@@ -31,6 +32,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: getTheme(),
     );
   }
 }
