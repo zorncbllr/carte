@@ -1,4 +1,4 @@
-import 'package:carte/domain/models/user.dart';
+import 'package:carte/features/user/domain/models/user.dart';
 import 'package:hive_ce/hive.dart';
 
 class HiveUser extends User with HiveObjectMixin {

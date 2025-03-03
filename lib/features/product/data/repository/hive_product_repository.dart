@@ -1,6 +1,6 @@
-import 'package:carte/data/models/hive_product.dart';
-import 'package:carte/domain/models/product.dart';
-import 'package:carte/domain/repository/product_repository.dart';
+import 'package:carte/features/product/data/models/hive_product.dart';
+import 'package:carte/features/product/domain/models/product.dart';
+import 'package:carte/features/product/domain/repository/product_repository.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 
 class HiveProductRepository implements ProductRepository {

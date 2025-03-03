@@ -1,4 +1,4 @@
-import 'package:carte/domain/models/order.dart';
+import 'package:carte/features/order/domain/models/order.dart';
 
 abstract class OrderRepository {
   Future<void> addOrder(Order newOrder);

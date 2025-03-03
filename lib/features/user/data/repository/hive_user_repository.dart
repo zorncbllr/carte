@@ -1,6 +1,6 @@
-import 'package:carte/data/models/hive_user.dart';
-import 'package:carte/domain/models/user.dart';
-import 'package:carte/domain/repository/user_repository.dart';
+import 'package:carte/features/user/data/models/hive_user.dart';
+import 'package:carte/features/user/domain/models/user.dart';
+import 'package:carte/features/user/domain/repository/user_repository.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 
 class HiveUserRepository implements UserRepository {

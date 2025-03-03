@@ -164,19 +164,21 @@ class HiveCommentAdapter extends TypeAdapter<HiveComment> {
       name: fields[0] as String,
       comment: fields[1] as String,
       profileImagePath: fields[2] as String,
-    );
+    )..commentId = fields[3] as UuidV4;
   }
 
   @override
   void write(BinaryWriter writer, HiveComment obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
       ..write(obj.comment)
       ..writeByte(2)
-      ..write(obj.profileImagePath);
+      ..write(obj.profileImagePath)
+      ..writeByte(3)
+      ..write(obj.commentId);
   }
 
   @override

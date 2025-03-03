@@ -1,4 +1,4 @@
-import 'package:carte/domain/models/product.dart';
+import 'package:carte/features/product/domain/models/product.dart';
 
 abstract class ProductRepository {
   Future<void> addProduct(Product newProduct);

@@ -1,4 +1,4 @@
-import 'package:carte/domain/models/product.dart';
+import 'package:carte/features/product/domain/models/product.dart';
 import 'package:hive_ce/hive.dart';
 
 class HiveProduct extends Product with HiveObjectMixin {

@@ -53,7 +53,7 @@ types:
         index: 2
   HiveComment:
     typeId: 3
-    nextIndex: 3
+    nextIndex: 4
     fields:
       name:
         index: 0
@@ -61,6 +61,8 @@ types:
         index: 1
       profileImagePath:
         index: 2
+      commentId:
+        index: 3
   UuidV4:
     typeId: 4
     nextIndex: 1

@@ -1,6 +1,6 @@
-import 'package:carte/data/models/hive_comment.dart';
-import 'package:carte/domain/models/comment.dart';
-import 'package:carte/domain/repository/comment_repository.dart';
+import 'package:carte/features/comment/data/models/hive_comment.dart';
+import 'package:carte/features/comment/domain/models/comment.dart';
+import 'package:carte/features/comment/domain/repository/comment_repository.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 
 class HiveCommentRepository implements CommentRepository {

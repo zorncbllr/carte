@@ -1,6 +1,6 @@
-import 'package:carte/data/models/hive_order.dart';
-import 'package:carte/domain/models/order.dart';
-import 'package:carte/domain/repository/order_repository.dart';
+import 'package:carte/features/order/data/models/hive_order.dart';
+import 'package:carte/features/order/domain/models/order.dart';
+import 'package:carte/features/order/domain/repository/order_repository.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 
 class HiveOrderRepository implements OrderRepository {

@@ -1,4 +1,4 @@
-import 'package:carte/domain/models/comment.dart';
+import 'package:carte/features/comment/domain/models/comment.dart';
 
 abstract class CommentRepository {
   Future<void> addComment(Comment newComment);
